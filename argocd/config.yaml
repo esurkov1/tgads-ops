@@ -12,9 +12,6 @@ data:
   repositories: |
     - type: git
       url: git@github.com:esurkov1/tgads-ops.git
-      sshPrivateKeySecret:
-        name: tgads-repo-ssh-key
-        key: sshPrivateKey
   
   # Настройки ресурсов
   resource.exclusions: |
