@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: git@github.com:esurkov1/tgads-ops.git
     targetRevision: HEAD
-    path: apps
+    path: argocd
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd

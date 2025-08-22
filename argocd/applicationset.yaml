@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: tgads-applicationset
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: git@github.com:esurkov1/tgads-ops.git
+      revision: HEAD
+      directories:
+      - path: apps/*
+  template:
+    metadata:
+      name: '{{path.basename}}-app'
+      namespace: argocd
+    spec:
+      project: default
+      source:
+        repoURL: git@github.com:esurkov1/tgads-ops.git
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{path.basename}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
