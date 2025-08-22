@@ -19,6 +19,10 @@ data:
       kinds: ["ConfigMap"]
       clusters: ["*"]
       name: "kube-root-ca.crt"
+    - apiGroups: [""]
+      kinds: ["ConfigMap"]
+      clusters: ["*"]
+      name: "argocd-cm"
   
   # Дополнительные настройки
   timeout.reconciliation: 180s
