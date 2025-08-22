@@ -21,7 +21,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/esurkov1/tgads-gitops.git
+    repoURL: https://github.com/esurkov1/tgads-ops.git
     targetRevision: HEAD
     path: services/new-application
   destination:
