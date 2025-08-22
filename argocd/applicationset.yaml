@@ -5,14 +5,14 @@ metadata:
   namespace: argocd
 spec:
   generators:
-  - git:
-      repoURL: git@github.com:esurkov1/tgads-ops.git
-      revision: HEAD
-      directories:
-      - path: apps/*
+  - list:
+      elements:
+      - name: busybox
+        namespace: busybox
+        path: apps/busybox
   template:
     metadata:
-      name: '{{path.basename}}-app'
+      name: '{{name}}-app'
       namespace: argocd
     spec:
       project: default
@@ -22,7 +22,7 @@ spec:
         path: '{{path}}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{path.basename}}'
+        namespace: '{{namespace}}'
       syncPolicy:
         automated:
           prune: true
